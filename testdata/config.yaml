@@ -1,0 +1,18 @@
+region: us-east-1
+prefix: raven
+environment: staging
+account_id: 246858458774
+
+sns_topics:
+  - name: simple_topic
+  - name: simple_fifo_topic
+    fifo: true
+
+queues:
+  - name: test_queue
+    sns_topics:
+      - name: simple_topic
+    dead_letter_queue:
+      enabled: true
+    visibility_timeout_seconds: 300
+    message_retention_seconds: 172800
